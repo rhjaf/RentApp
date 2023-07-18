@@ -1,7 +1,7 @@
 package DataModels;
 
 public enum Brand {
-    TELSA,
+    TESLA,
     AUDI,
     TOYOTA,
     FERRARI

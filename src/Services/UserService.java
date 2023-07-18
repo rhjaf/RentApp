@@ -1,12 +1,14 @@
 package Services;
 
 import DataModels.User;
+import DataModels.UserArrayDataAccessService;
 import DataModels.UserDao;
+import DataModels.UserFileDataAccessService;
 
 import java.util.UUID;
 
 public class UserService {
-    private final UserDao userDao = new UserDao();
+    private final UserDao userDao = new UserFileDataAccessService();
 
 
     public User[] getUsers(){

@@ -29,6 +29,7 @@ public class BookingDao {
         for (int i = 0; i < bookings.length; i++)
             bigBookings[i] = bookings[i];
         bigBookings[bookings.length] = booking;
+
     }
 
 }
