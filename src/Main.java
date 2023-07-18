@@ -4,6 +4,7 @@ import Services.CarService;
 import Services.EmailService;
 import Services.UserService;
 
+import java.util.List;
 import java.util.Scanner;
 import java.util.UUID;
 
@@ -70,8 +71,8 @@ public class Main {
     }
 
     private static void displayAvailableCars(BookingService carBookingService, boolean isElectric) {
-        Car[] availableCars = isElectric ? carBookingService.getAvailableElectricalCars() : carBookingService.getAvailableCars();
-        if (availableCars.length == 0) {
+        List<Car> availableCars = isElectric ? carBookingService.getAvailableElectricalCars() : carBookingService.getAvailableCars();
+        if (availableCars.isEmpty()) {
             System.out.println("❌ No cars available for renting");
             return;
         }
@@ -81,8 +82,8 @@ public class Main {
     }
 
     private static void displayAllUsers(UserService userService) {
-        User[] users = userService.getUsers();
-        if (users.length == 0) {
+        List<User> users = userService.getUsers();
+        if (users.isEmpty()) {
             System.out.println("❌ No users in the system");
             return;
         }
@@ -120,8 +121,8 @@ public class Main {
     }
 
     private static void allBookings(BookingService carBookingService) {
-        Booking[] bookings = carBookingService.getBookings();
-        if (bookings.length == 0) {
+        List<Booking> bookings = carBookingService.getBookings();
+        if (bookings.isEmpty()) {
             System.out.println("No bookings available 😕");
             return;
         }
@@ -142,8 +143,8 @@ public class Main {
                 return;
             }
 
-            Car[] userBookedCars = carBookingService.getUserBookedCars(user.getId());
-            if (userBookedCars.length == 0) {
+            List<Car> userBookedCars = carBookingService.getUserBookedCars(user.getId());
+            if (userBookedCars.isEmpty()) {
                 System.out.printf("❌ user %s has no cars booked\n", user);
                 return;
             }

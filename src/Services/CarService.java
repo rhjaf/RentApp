@@ -3,6 +3,10 @@ package Services;
 import DataModels.Car;
 import DataModels.CarDao;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class CarService {
     private final CarDao carDao;
 
@@ -10,7 +14,7 @@ public class CarService {
         this.carDao = carDao;
     }
 
-    public Car[] getAllCars(){
+    public List<Car> getAllCars(){
         return carDao.getAllCars();
     }
 
@@ -22,26 +26,17 @@ public class CarService {
         throw new IllegalStateException(String.format("Car with reg %s not found",regNumber));
     }
 
-    public Car[] getAllElectricalCars(){
-        int electric_car_count = 0;
-        Car[] cars = getAllCars();
-        if(cars.length==0){
-            return new Car[0];
+    public List<Car> getAllElectricalCars(){
+
+        List<Car> cars = getAllCars();
+        if(cars.size()==0){
+            return Collections.emptyList();
         }
+        List<Car> electricCars = new ArrayList<>();
+
         for(Car car:cars){
             if(car.isElectric())
-                electric_car_count++;
-        }
-        if(electric_car_count==0)
-            return new Car[0];
-        Car[] electricCars = new Car[electric_car_count];
-
-        int index = 0;
-
-        for (int i = 0; i < cars.length; i++) {
-            if (cars[i].isElectric()) {
-                electricCars[index++] = cars[i];
-            }
+                electricCars.add(car);
         }
 
         return electricCars;

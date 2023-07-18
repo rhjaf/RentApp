@@ -6,6 +6,7 @@ import DataModels.UserDao;
 import DataModels.UserFileDataAccessService;
 
 import java.util.UUID;
+import java.util.List;
 
 public class UserService {
 
@@ -15,7 +16,7 @@ public class UserService {
         this.userDao = userDao;
     }
 
-    public User[] getUsers(){
+    public List<User> getUsers(){
         return userDao.getUsers();
     }
 

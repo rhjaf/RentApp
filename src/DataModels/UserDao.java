@@ -1,5 +1,7 @@
 package DataModels;
 
+import java.util.List;
+
 public interface UserDao {
-    User[] getUsers();
+    List<User> getUsers();
 }
