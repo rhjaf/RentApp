@@ -1,7 +1,4 @@
-import DataModels.Booking;
-import DataModels.Car;
-import DataModels.CarDao;
-import DataModels.User;
+import DataModels.*;
 import Services.BookingService;
 import Services.CarService;
 import Services.EmailService;
@@ -25,8 +22,12 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        UserService userService = new UserService();
-        BookingService bookingService = new BookingService();
+        UserDao userDao = new UserFileDataAccessService();
+        UserService userService = new UserService(userDao);
+        BookingDao bookingDao = new BookingDao();
+        CarDao carDao = new CarDao();
+        CarService carService = new CarService(carDao);
+        BookingService bookingService = new BookingService(bookingDao,carService);
         Scanner scanner = new Scanner(System.in);
         Integer choice = null;
 

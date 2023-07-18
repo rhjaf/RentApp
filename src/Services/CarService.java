@@ -4,7 +4,12 @@ import DataModels.Car;
 import DataModels.CarDao;
 
 public class CarService {
-    private CarDao carDao = new CarDao();
+    private final CarDao carDao;
+
+    public CarService(CarDao carDao) {
+        this.carDao = carDao;
+    }
+
     public Car[] getAllCars(){
         return carDao.getAllCars();
     }
